@@ -1,70 +1,100 @@
-//campos de input
-const getInputValueBook = document.getElementById("fildBook");
-const getInputValuePag = document.getElementById("fildPag");
+"use strict";
+/* pegando os dois campos de input */
+const inputLivro = document.getElementById("fildBook");
+const inputPagina = document.getElementById("fildPag");
 
-//botões
-const start = document.getElementById("add");
-const recuperarBtn = document.getElementById("recuperar");
-const limparBtn = document.getElementById("limpar");
+//Div que irá receber os livros adicionados na hora
+const livroAdd = document.getElementById("livros");
 
-const getDiv = document.getElementById("recuperarValor");
+// Div que irá receber os valores que serão recuperados
+const $recuperar = document.getElementById("recuperar");
 
-(function executar() {
-	"use strict";
+//Função que recebe um callback para criar os 3 botões ( enviar, recuperar, limpar )
+function botaoEnviar(texto, callback) {
+	const inserir_aqui = document.querySelector("#buttons");
+	const botao = document.createElement("button");
+	botao.textContent = texto;
 
-	start.addEventListener("click", () => {
-		let tr = document.createElement("tr");
-		let td1 = document.createElement("td");
-		let td2 = document.createElement("td");
+	callback(botao);
 
-		td1.innerHTML = getInputValueBook.value;
-		td2.innerHTML = getInputValuePag.value;
+	inserir_aqui.insertAdjacentElement("beforeend", botao);
+	return botao;
+}
 
-		tr.appendChild(td1);
-		tr.appendChild(td2);
+//botão de enviar🚀
 
-		document.querySelector("tbody").insertAdjacentElement("beforeend", tr);
+botaoEnviar("Enviar🚀", (e) => {
+	e.addEventListener("click", () => {
+		const livros = {
+			Livro: inputLivro.value,
+			Página: inputPagina.value,
+		};
 
-		function addLocalStorage() {
-			const livros = {
-				livro: getInputValueBook.value,
-				Pagina: getInputValuePag.value,
-			};
+		//converter JSON String em JSON Object.
+		const lv = localStorage["livro"] ? JSON.parse(localStorage["livro"]) : [];
 
-			const storage = localStorage.getItem("Livros");
+		//para cada clique ira adicionar um novo elemento
+		lv.push(livros);
 
-			if (storage) {
-				let json = JSON.parse(storage);
-				json.push(livros);
+		//salvar os elementos no localStorage
+		localStorage.setItem("livro", JSON.stringify(lv));
 
-				json = JSON.stringify(json);
+		//criando elemento (i) que ira receber o valor para ser mostrado na tela
+		const i = document.createElement("i");
+		livroAdd.insertAdjacentElement("beforeend", i);
+		i.innerHTML = `<br> <strong>Livro:</strong> ${livros.Livro} <br> <strong>Página:</strong> ${livros.Página} <br>`;
 
-				localStorage.setItem("Livros", json);
-			} else {
-				localStorage.setItem("Livros", JSON.stringify([livros]));
-			}
-			return;
-		}
-		addLocalStorage();
+		Swal.fire({
+			position: "top-end",
+			icon: "success",
+			title: "Livro adicionado com sucesso🚀",
+			showConfirmButton: false,
+			timer: 1500,
+		});
 	});
+});
 
-	limparBtn.addEventListener("click", () => {
-		getInputValueBook.value = null;
-		getInputValuePag.value = null;
+//✨
 
-		localStorage.removeItem("Livros");
-		localStorage.removeItem("Página");
+const $tbodySaida = document.createElement("table");
+
+botaoEnviar("Recuperar🚀", (e) => {
+	e.addEventListener("click", () => {
+		const table_saida = $tbodySaida;
+		table_saida.innerHTML = `
+
+		<tbody>
+			<tr>
+				<td> <br> ${localStorage
+          .getItem("livro")
+          //remover todas as aspas
+          .replace(/[\\"]/g, "")
+          //remover todos os " [{ "
+          .replace(/[\\"[{"]/g, "")
+          //remover todos os " } "
+          .replace(/[\\"}"]/g, "<br> <hr>")
+          // trocar as virgulas por quebra de linha
+          .replace(/[\\","]/g, "<br>")
+          //remover " ] "
+          .replace("]", "")} <br> </td>
+			</tr>
+		</tbody>
+		
+		`;
+
+		$recuperar.insertAdjacentElement("beforeend", table_saida);
 	});
+});
 
-	//
+//🚨
 
-	function recuperar() {
-		const p = document.createElement("p");
-		p.innerHTML = localStorage.getItem("Livros");
-		getDiv.insertAdjacentElement("beforeend", p);
-		return;
-	}
-	recuperarBtn.addEventListener("click", recuperar);
-
-	//
-})();
+botaoEnviar("Limpar🚀", (e) => {
+	e.addEventListener("click", () => {
+		localStorage.removeItem("livro");
+		localStorage.removeItem("pagina");
+		livroAdd.textContent = "";
+		$tbodySaida.remove();
+		inputLivro.value = inputLivro.style.placeContent = "Livro";
+		inputPagina.value = inputPagina.style.placeContent = "287";
+	});
+});

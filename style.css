@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html body {
+    background-color: #1e1926;
+    font-size: 16pt;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: whitesmoke;
+}
+
+i {
+    color: blueviolet;
+}
+
+strong {
+    color: aliceblue;
+    background-color: blueviolet;
+    padding: 3px;
+    border-radius: 0.2rem;
+}
+
+#inputs {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 50%);
+}
+
+#inputs input {
+    margin: 0.5rem 0;
+    font-size: 16pt;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 0 3px whitesmoke;
+}
+
+button {
+    padding: 0.6rem;
+    margin: 0.5rem;
+    font-size: 18pt;
+    border-radius: 0.5rem;
+}
+
+button:first-child {
+    background-color: greenyellow;
+}
+
+button:nth-child(2) {
+    background-color: black;
+    color: green;
+}
+
+button:last-child {
+    background-color: crimson;
+    color: whitesmoke;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+table {
+    border-spacing: 2rem;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+}
+
+table thead {
+    color: cornflowerblue;
+}
+
+table tbody {
+    color: green;
+}
+
+#recuperarValor {
+    text-align: center;
+    color: green;
+    display: block;
+    width: 100%;
+
+}
+
+#recuperar table {
+    border-spacing: 2rem;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#recuperar table thead,
+tbody {
+    color: blueviolet;
+}

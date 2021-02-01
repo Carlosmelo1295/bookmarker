@@ -5,109 +5,35 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Document</title>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		html body {
-			background-color: #1e1926;
-			font-size: 16pt;
-			font-family: Georgia, "Times New Roman", Times, serif;
-			width: 100%;
-			text-align: center;
-		}
-
-		#container {
-			width: calc(100% - 40%);
-			margin: 0 auto;
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			color: whitesmoke;
-		}
-
-		button,
-		input {
-			margin: 0.5rem;
-			font-size: 18pt;
-			padding: 1rem;
-			border-radius: 0.5rem;
-			border: none;
-			box-shadow: 0 0 3px whitesmoke;
-		}
-
-		button:first-child {
-			background-color: greenyellow;
-		}
-
-		button:nth-child(2) {
-			background-color: black;
-			color: green;
-		}
-
-		button:last-child {
-			background-color: crimson;
-			color: whitesmoke;
-		}
-
-		table {
-			border-spacing: 2rem;
-			cursor: pointer;
-			text-align: center;
-		}
-
-		table thead {
-			color: cornflowerblue;
-		}
-
-		table tbody {
-			color: green;
-		}
-
-		#recuperarValor {
-			text-align: center;
-			color: green;
-			display: block;
-			width: 100%;
-
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 	<div id="container">
-		<input id="fildBook" placeholder="book" type="text" />
-		<input id="fildPag" placeholder="pag" type="number" />
-		<div>
-			<button id="add">Add livro</button>
-			<button id="recuperar">Livros salvos</button>
-			<button id="limpar">Limpar</button>
-		</div>
-		<table>
-			<thead>
-				<tr>
-					<th>Livro</th>
-					<th>Página</th>
-				</tr>
-			</thead>
+		<div id="inputs">
+			<input id="fildBook" placeholder="Livro" type="text" />
+			<input id="fildPag" placeholder="Página" type="number" />
+			<div id="buttons">
 
-			<tbody>
-				<tr>
-					<td>Exemplo</td>
-					<td>215</td>
-				</tr>
-			</tbody>
-		</table>
-		<hr>
-		<div id="recuperarValor">
-			<p>Livros Salvos</p>
+			</div>
+		</div>
+
+		<div id="livros">
+
+		</div>
+		<br>
+
+		<div id="recuperar">
+			<h2>Livros salvos</h2>
+			<i>Clique em "Recuperar" e veja seus livros salvos🎉</i>
+
 
 		</div>
 	</div>
+
+
 	<script src="script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>

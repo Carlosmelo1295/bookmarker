@@ -4,32 +4,79 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-color: #4169e1;
+    --primary-txt: #eeeee0;
+    --secundary-txt: #7ccd7c;
+}
+
 html body {
-    background-color: #1e1926;
+    background-color: var(--bg-color);
     font-size: 16pt;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: "Poppins", sans-serif;
     width: 100%;
-    height: 100%;
+    max-height: 100vh;
     text-align: center;
 }
 
 #container {
     width: 100%;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color: whitesmoke;
+    color: var(--primary-txt);
+    position: relative;
+}
+
+.fa-eye {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20pt;
+    cursor: pointer;
+    background-color: var(--primary-txt);
+    color: var(--bg-color);
+    padding: 1rem;
+}
+
+.fa-times-circle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20pt;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: red;
+    color: var(--primary-txt);
+}
+
+#howToUse {
+    background-color: var(--primary-txt);
+    color: var(--bg-color);
+    padding: 3rem;
+    display: none;
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+#howToUse ol {
+    text-align: left;
 }
 
 i {
-    color: blueviolet;
+    color: var(--primary-txt);
+    border-radius: 0.3rem;
+    padding: 3px;
+}
+
+h1 {
+    color: #00ff00;
 }
 
 strong {
-    color: aliceblue;
-    background-color: blueviolet;
+    color: var(--primary-txt);
+    background-color: var(--secundary-txt);
     padding: 3px;
     border-radius: 0.2rem;
 }
@@ -46,7 +93,6 @@ strong {
     padding: 1rem;
     border-radius: 0.5rem;
     border: none;
-    box-shadow: 0 0 3px whitesmoke;
 }
 
 button {
@@ -54,6 +100,14 @@ button {
     margin: 0.5rem;
     font-size: 18pt;
     border-radius: 0.5rem;
+    border: none;
+    box-shadow: 3px 5px 0 black;
+    transition: 300ms;
+}
+
+button:hover {
+    box-shadow: none;
+    transform: translateY(3px);
 }
 
 button:first-child {
@@ -61,8 +115,8 @@ button:first-child {
 }
 
 button:nth-child(2) {
-    background-color: black;
-    color: green;
+    background-color: #636e72;
+    color: #00ff00;
 }
 
 button:last-child {
@@ -76,37 +130,14 @@ button:last-child {
     width: 100%;
 }
 
-table {
-    border-spacing: 2rem;
-    cursor: pointer;
-    text-align: center;
-    margin: 0 auto;
-}
-
-table thead {
-    color: cornflowerblue;
-}
-
-table tbody {
-    color: green;
-}
-
-#recuperarValor {
-    text-align: center;
-    color: green;
-    display: block;
-    width: 100%;
-
-}
-
-#recuperar table {
-    border-spacing: 2rem;
-    cursor: pointer;
-    text-align: center;
-    margin: 0 auto;
-}
-
-#recuperar table thead,
-tbody {
-    color: blueviolet;
+#recuperar {
+    color: black;
+    background-color: #00ff00;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 0 5px black;
+    margin-bottom: 1rem;
+    overflow-y: scroll;
+    max-height: 50vh;
 }

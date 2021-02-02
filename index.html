@@ -5,32 +5,45 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Document</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+	<script src="https://kit.fontawesome.com/cbd12f7b72.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+	<div id="howToUse">
+		<i class="fas fa-times-circle"></i>
+		<ol>
+			<li>Digite o livro e a página que deseja salvar.</li>
+			<li>
+				Ao clicar em salvar, o livro ficará guardado no armazenamento local do
+				seu aparelho.
+			</li>
+			<li>Para mostrar todos os seus livros, basta clicar em "Recuperar".</li>
+			<li>
+				O botão "Limpar "irá fazer uma limpa na sua tela e excluir todos os livros do
+				armazenamento. <strong>use com cuidado</strong>.
+			</li>
+		</ol>
+	</div>
+
 	<div id="container">
+		<i class="fas fa-eye"></i>
+		<h1>bookmark🔖</h1>
 		<div id="inputs">
 			<input id="fildBook" placeholder="Livro" type="text" />
 			<input id="fildPag" placeholder="Página" type="number" />
-			<div id="buttons">
-
-			</div>
+			<div id="buttons"></div>
 		</div>
 
-		<div id="livros">
-
-		</div>
-		<br>
+		<div id="livros"></div>
+		<br />
 
 		<div id="recuperar">
-			<h2>Livros salvos</h2>
-			<i>Clique em "Recuperar" e veja seus livros salvos🎉</i>
-
-
+			<p>Clique em "Recuperar" e veja seus livros salvos🎉</p>
 		</div>
 	</div>
-
 
 	<script src="script.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

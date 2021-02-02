@@ -23,7 +23,7 @@ function botaoEnviar(texto, callback) {
 
 //botão de enviar🚀
 
-botaoEnviar("Enviar🚀", (e) => {
+botaoEnviar("Salvar🚀", (e) => {
 	e.addEventListener("click", () => {
 		const livros = {
 			Livro: inputLivro.value,
@@ -41,11 +41,11 @@ botaoEnviar("Enviar🚀", (e) => {
 
 		//criando elemento (i) que ira receber o valor para ser mostrado na tela
 		const i = document.createElement("i");
+		i.innerHTML = `<br> Livro: <strong>${livros.Livro}</strong> <br> Página: <strong>${livros.Página}</strong> <br><hr>`;
 		livroAdd.insertAdjacentElement("beforeend", i);
-		i.innerHTML = `<br> <strong>Livro:</strong> ${livros.Livro} <br> <strong>Página:</strong> ${livros.Página} <br>`;
 
 		Swal.fire({
-			position: "top-end",
+			position: "top-center",
 			icon: "success",
 			title: "Livro adicionado com sucesso🚀",
 			showConfirmButton: false,
@@ -56,45 +56,60 @@ botaoEnviar("Enviar🚀", (e) => {
 
 //✨
 
-const $tbodySaida = document.createElement("table");
+const $p = document.createElement("p");
 
-botaoEnviar("Recuperar🚀", (e) => {
+botaoEnviar("Recuperar🎉", (e) => {
 	e.addEventListener("click", () => {
-		const table_saida = $tbodySaida;
-		table_saida.innerHTML = `
+		const saida = $p;
+		saida.innerHTML = `
 
-		<tbody>
-			<tr>
-				<td> <br> ${localStorage
-          .getItem("livro")
-          //remover todas as aspas
-          .replace(/[\\"]/g, "")
-          //remover todos os " [{ "
-          .replace(/[\\"[{"]/g, "")
-          //remover todos os " } "
-          .replace(/[\\"}"]/g, "<br> <hr>")
-          // trocar as virgulas por quebra de linha
-          .replace(/[\\","]/g, "<br>")
-          //remover " ] "
-          .replace("]", "")} <br> </td>
-			</tr>
-		</tbody>
+		 <br> ${localStorage
+       .getItem("livro")
+       //remover todas as aspas
+       .replace(/[\\"]/g, "")
+       //remover todos os " [{ "
+       .replace(/[\\"[{"]/g, "")
+       //remover todos os " } "
+       .replace(/[\\"}"]/g, "<br> <hr>")
+       // trocar as virgulas por quebra de linha
+       .replace(/[\\","]/g, "<br>")
+       //remover " ] "
+       .replace("]", "")} <br>
+		
 		
 		`;
 
-		$recuperar.insertAdjacentElement("beforeend", table_saida);
+		$recuperar.insertAdjacentElement("beforeend", saida);
 	});
 });
 
 //🚨
 
-botaoEnviar("Limpar🚀", (e) => {
+botaoEnviar("Limpar💫", (e) => {
 	e.addEventListener("click", () => {
 		localStorage.removeItem("livro");
 		localStorage.removeItem("pagina");
 		livroAdd.textContent = "";
-		$tbodySaida.remove();
+		$p.remove();
 		inputLivro.value = inputLivro.style.placeContent = "Livro";
 		inputPagina.value = inputPagina.style.placeContent = "287";
 	});
 });
+
+const modal = document.getElementById("howToUse");
+const modalEvent = {
+	open() {
+		modal.style.display = "block";
+	},
+	close() {
+		modal.style.display = "none";
+	},
+};
+
+document.querySelector(".fa-eye").addEventListener("click", modalEvent.open);
+
+document
+	.querySelector(".fa-times-circle")
+	.addEventListener("click", modalEvent.close);
+modalEvent.open;
+modalEvent.close;
